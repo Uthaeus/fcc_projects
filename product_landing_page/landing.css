@@ -1,7 +1,22 @@
 body {
-  background-color: grey;
+  background: url("https://purposebuiltsoftware.com/wp-content/uploads/2016/12/web-dev-student-illustration-Feature_1290x688_MS1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
-nav {
-  background-color: white;
+.main-nav a {
+
+}
+
+.sub-nav a {
+  background-color: #babec4;
+  font-size: 0.8em;
+  -webkit-box-shadow: 1px 3px 5px 1px rgba(191,189,191,1);
+  -moz-box-shadow: 1px 3px 5px 1px rgba(191,189,191,1);
+  box-shadow: 1px 3px 5px 1px rgba(191,189,191,1);
+}
+
+.nav-link {
+  color: grey;
+  border: none;
 }
