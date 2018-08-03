@@ -1,7 +1,13 @@
 body {
-  background: url("https://purposebuiltsoftware.com/wp-content/uploads/2016/12/web-dev-student-illustration-Feature_1290x688_MS1.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: url("https://purposebuiltsoftware.com/wp-content/uploads/2016/12/web-dev-student-illustration-Feature_1290x688_MS1.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.mybrand {
+  font-family: 'Preahvihear', cursive;
 }
 
 .main-nav a {
@@ -17,6 +23,57 @@ body {
 }
 
 .nav-link {
-  color: grey;
+  color: #747577;
   border: none;
+  font-family: 'Crimson Text', serif;
 }
+
+.nav-link:hover {
+  color: #88898c;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #606163;
+  align-items: center;
+  border-top: 1px solid #3d424c;
+  font-size: 3em;
+}
+
+.foot-link {
+  color: #747577;
+}
+
+footer a:hover {
+  color: #88898c;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.main-content {
+  float: right;
+  margin: 20% 10% 0 0;
+  font-family: 'Arimo', sans-serif;
+}
+
+.line1, .line2 {
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+.line3 {
+  font-size: 0.9em;
+}
+
+::-webkit-input-placeholder {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.7em;
+}
+/* 
+font-family: 'Preahvihear', cursive;
+font-family: 'Arimo', sans-serif;
+font-family: 'Crimson Text', serif; */
