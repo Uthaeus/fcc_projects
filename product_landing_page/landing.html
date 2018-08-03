@@ -8,61 +8,63 @@
     <link href="landing.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar main-nav navbar-light bg-light">
-      <a class="navbar-brand mybrand">FreelanceThis</a>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="find freelancers" aria-label="Search" style="width: 400px;">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <ul class="nav nav-pills justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="#">How it works</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Post a job</a>
-        </li>
-      </ul>
-    </nav> 
-    <nav class="sub-nav">
-      <ul class="nav nav-fill">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Web Dev</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mobile Dev</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Design</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Writing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Admin Support</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Customer Service</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Marketing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Accounting</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">View All</a>
-        </li>
-      </ul>
-    </nav>      
+    <header id="header">
+      <nav class="navbar main-nav navbar-light bg-light" id="nav-bar">
+        <a class="navbar-brand mybrand" id="header-img">FreelanceThis</a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="find freelancers" aria-label="Search" style="width: 400px;">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="nav nav-pills justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="#page-two">How it works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Post a job</a>
+          </li>
+        </ul>
+      </nav> 
+      <nav class="sub-nav">
+        <ul class="nav nav-fill">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Web Dev</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Mobile Dev</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Writing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Admin Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Customer Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Marketing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Accounting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">View All</a>
+          </li>
+        </ul>
+      </nav> 
+    </header>     
 
     <main class="container-fluid">
       <div class="main-content">
@@ -77,6 +79,37 @@
         </form>
       </div>
     </main>
+
+    <div id="page-two" class="container-fluid text-center bg-light">
+      <div class="two-content">
+        <h2 class"two-title">How it works</h2>
+        <div class="card">
+          <p class="two-text">This is the section where the typical process is explained to the customer</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-three" class="container text-center">
+      
+      <div class="jumbotron login" id="login" style="height: 600px;">
+        <h1 class="display-4">Login</h1>
+        <hr class="my-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="email" aria-label="Search" style="width: 450px;"><br />
+        <input class="form-control mr-sm-2" type="search" placeholder="password" aria-label="Search" style="width: 450px;"><br />
+        <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Login</a>
+      </div>
+    
+      <div class="jumbotron signup" id="signup">
+        <h1 class="display-4">Sign Up</h1>
+        <p class="lead">Join up to see all that we can offer you.</p>
+        <hr class="my-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="email" aria-label="Search" style="width: 450px;"><br />
+        <input class="form-control mr-sm-2" type="search" placeholder="name" aria-label="Search" style="width: 450px;"><br />
+        <input class="form-control mr-sm-2" type="search" placeholder="password" aria-label="Search" style="width: 450px;"><br />
+        <input class="form-control mr-sm-2" type="search" placeholder="confirm password" aria-label="Search" style="width: 450px;"><br />
+        <a class="btn btn-primary btn-sm btn-block" href="#" role="button">Sign Up</a>
+      </div>
+    </div>
 
     <footer>
       <ul class="navbar nav-fill">
