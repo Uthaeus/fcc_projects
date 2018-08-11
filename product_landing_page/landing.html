@@ -87,6 +87,12 @@
           <p class="two-text">This is the section where the typical process is explained to the customer</p>
         </div>
       </div>
+
+      <div class="container text-right">
+        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/OeuS3PnjTH8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+      </div>
+
       <div class="pricing" id="pricing">
         <div class="row">
           <div class="col-md-3">
@@ -149,10 +155,17 @@
       <div class="jumbotron login col-md-5" id="login" style="height: 400px;">
         <h1 class="display-4">Login</h1>
         <hr class="my-4">
-        <form id="form">
-          <input id="email" class="form-control mr-sm-2" type="email" placeholder="email" aria-label="Search" style="width: 450px;" required><br />
-          <input class="form-control mr-sm-2" type="text" placeholder="password" aria-label="Search" style="width: 450px;" required><br />
-          <a class="btn btn-primary btn-sm btn-block" href="https://www.freecodecamp.com/email-submit)" target="_blank" role="button">Login</a>
+        <form id="form" action="https://www.freecodecamp.com/email-submit" target="_blank" method="post">
+          <div class="form-group">
+              <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+              <input class="form-control item" type="password" name="password" minlength="6" id="password" placeholder="Password(must be at least 6 characters)" required>
+          </div>
+          
+          <div class="form-group">
+            <button class="btn btn-primary btn-block create-account" type="submit">Login</button>
+          </div>
         </form>
       </div><br />
     
@@ -160,7 +173,7 @@
         <h1 class="display-4">Sign Up</h1>
         <p class="lead">Join up to see all that we can offer you.</p>
         <hr class="my-4">
-        <form>
+        <form action="https://www.freecodecamp.com/email-submit" target="_blank" method="post">
           <div class="form-group">
               <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
           </div>
@@ -172,7 +185,7 @@
           </div>
           
           <div class="form-group">
-              <button class="btn btn-primary btn-block create-account" type="submit">Create Account</button>
+            <button class="btn btn-primary btn-block create-account" type="submit">Create Account</button>
           </div>
         </form>
       </div>
