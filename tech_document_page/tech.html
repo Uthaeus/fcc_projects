@@ -8,20 +8,153 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-3" id="menu">
-        <h3>Doc title</h3>
-        <hr>
-        <a href="#">Introduction</a>
-        <hr>
-        <a href="#">second item</a>
-        <hr>
-        <a href="#">third item</a>
+      <div class="col-md-3">
+        <nav id="navbar">
+          <header class="nav-head">Bootstrap Collapse</header>
+          <ul>
+            <li>
+              <a class="nav-link  menu-item" href="#how_it_works">
+                <span class="nav-item">How it works</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#multiple_targets">
+                <span class="nav-item">Multiple targets</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#accessibility">
+                <span class="nav-item">Accessibility</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#usage">
+                <span class="nav-item">Usage</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#via_data">
+                <span class="nav-item">Via data attributes</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#via_javascript">
+                <span class="nav-item">Via JavaScript</span>
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
       </div>
 
+      <!-- 10 total p elements
+      5 code elements 
+      5 li elements -->
       <div class="col-md-9" id="doc">
-        <div class="container">
-          <h4>Introduction</h4>
-        </div>
+        <main id="main-doc">
+          <section class="main-section" id="how_it_works">
+            <header>How it works</header>
+            <p class="section-content">
+              The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the height from it’s current value to 0. Given how CSS handles animations, you cannot use padding on a .collapse element. Instead, use the class as an independent wrapping element.
+            </p>
+            <ul>
+              <li>.collapse hides content</li>
+              <li>.collapsing is applied during transitions</li>
+              <li>.collapse.show shows content</li>
+            </ul>
+            <p class="section-content">
+              You can use a link with the href attribute, or a button with the data-target attribute. In both cases, the data-toggle="collapse" is required.
+            </p>
+            <code>
+                &lt;p>
+                  &lt;a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Link with href
+                  &lt;/a>
+                  &lt;button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Button with data-target
+                  &lt;/button>
+                &lt;/p>
+                &lt;div class="collapse" id="collapseExample">
+                  &lt;div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  &lt;/div>
+                &lt;/div>
+            </code>
+          </section>
+          <section class="main-section" id="multiple_targets">
+            <header>Multiple targets</header>
+            <p class="section-content">
+              A &lt;button> or &lt;a> can show and hide multiple elements by referencing them with a JQuery selector in its href or data-target attribute. Multiple &lt;button> or &lt;a> can show and hide an element if they each reference it with their href or data-target attribute
+            </p>
+            <code>
+                &lt;p>
+                  &lt;a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element&lt;/a>
+                  &lt;button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element&lt;/button>
+                  &lt;button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements&lt;/button>
+                &lt;/p>
+                &lt;div class="row">
+                  &lt;div class="col">
+                    &lt;div class="collapse multi-collapse" id="multiCollapseExample1">
+                      &lt;div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      &lt;/div>
+                    &lt;/div>
+                  &lt;/div>
+                  &lt;div class="col">
+                    &lt;div class="collapse multi-collapse" id="multiCollapseExample2">
+                      &lt;div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      &lt;/div>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+            </code>
+          </section>
+          <section class="main-section" id="accessibility">
+            <header>Accessibility</header>
+            <p class="section-content">
+              Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of aria-expanded="false". If you’ve set the collapsible element to be open by default using the show class, set aria-expanded="true" on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsbile element). If the control element’s HTML element is not a button (e.g., an &lt;a> or &lt;div>), the attribute role="button" should be added to the element.
+            </p>
+            <p>
+              If your control element is targeting a single collapsible element – i.e. the data-target attribute is pointing to an id selector – you should add the aria-controls attribute to the control element, containing the id of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
+            </p>
+            <p>
+              Note that Bootstrap’s current implementation does not cover the various keyboard interactions described in the WAI-ARIA Authoring Practices 1.1 accordion pattern - you will need to include these yourself with custom JavaScript.
+            </p>
+          </section>
+          <section class="main-section" id="usage">
+            <header>Usage</header>
+            <p class="section-content">
+              The collapse plugin utilizes a few classes to handle the heavy lifting:
+            </p>
+            <ul>
+              <li>.collapse hides the content</li>
+              <li>.collapse.show shows the content</li>
+              <li>.collapsing is added when the transition starts, and removed when it finishes</li>
+            </ul>
+            <p class="section-content">
+              These classes can be found in _transitions.scss.
+            </p>
+          </section>
+          <section class="main-section" id="via_data">
+            <header>Via data attributes</header>
+            <p class="section-content">
+              Just add data-toggle="collapse" and a data-target to the element to automatically assign control of one or more collapsible elements. The data-target attribute accepts a CSS selector to apply the collapse to. Be sure to add the class collapse to the collapsible element. If you’d like it to default open, add the additional class show.
+            </p>
+            <p class="section-content">
+              To add accordion-like group management to a collapsible area, add the data attribute data-parent="#selector". Refer to the demo to see this in action.
+            </p>
+          </section>
+          <section class="main-section" id="via_javascript">
+            <header>Via JavaScript</header>
+            <p class="section-content">
+              Enable manually with:
+            </p>
+            <code>
+              $('.collapse').collapse()
+            </code>
+          </section>
+        </main>
       </div>
     </div>
 
