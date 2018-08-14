@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>tech page</title>
+    <title>Tech Doc Page</title>
     <link rel="stylesheet" href="tech.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cairo|Crimson+Text|Raleway" rel="stylesheet">
 
   </head>
   <body>
@@ -42,14 +43,19 @@
                 <span class="nav-item">Via JavaScript</span>
               </a>
             </li>
-            
+            <li>
+              <a class="nav-link  menu-item" href="#methods">
+                <span class="nav-item">Methods</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link  menu-item" href="#references">
+                <span class="nav-item">References</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
-
-      <!-- 10 total p elements
-      5 code elements 
-      5 li elements -->
       <div class="col-md-9" id="doc">
         <main id="main-doc">
           <section class="main-section" id="how_it_works">
@@ -153,6 +159,54 @@
             <code>
               $('.collapse').collapse()
             </code>
+          </section>
+          <section class="main-section" id="methods">
+            <header>Methods</header>
+            <p class="sub-head">.collapse(options)</p>
+            <p class="section-content">
+              Activates your content as a collapsible element. Accepts an optional options object.
+            </p>
+            <code>
+              $('#myCollapsible').collapse({
+                toggle: false
+              })
+            </code>
+            <p class="sub-head">.collapse('toggle')</p>
+            <p class="section-content">
+              Toggles a collapsible element to shown or hidden. Returns to the caller before the collapsible element has actually been shown or hidden (i.e. before the shown.bs.collapse or hidden.bs.collapse event occurs).
+            </p>
+            <p class="sub-head">.collapse('show')</p>
+            <p class="section-content">
+              Shows a collapsible element. Returns to the caller before the collapsible element has actually been shown (i.e. before the shown.bs.collapse event occurs).
+            </p>
+            <p class="sub-head">.collapse('hide')</p>
+            <p class="section-content">
+              Hides a collapsible element. Returns to the caller before the collapsible element has actually been hidden (i.e. before the hidden.bs.collapse event occurs).
+            </p>
+            <p class="sub-head">.collapse('dispose')</p>
+            <p class="section-content">
+              Destroys an element’s collapse.
+            </p>
+            <p class="sub-head">Events</p>
+            <p class="section-content">
+              Bootstrap’s collapse class exposes a few events for hooking into collapse functionality.
+            </p>
+            <code>
+              $('#myCollapsible').on('hidden.bs.collapse', function () {
+                // do something…
+              })
+            </code>
+          </section>
+          <section class="main-section" id="references">
+            <header>References</header>
+            <p class="section-content">
+              *All information is from Bootstrap's website
+            </p>
+            <ul>
+              <li>
+                You can find this info and tons more <a href="https://getbootstrap.com/" target="_blank">here</a>.
+              </li>
+            </ul>
           </section>
         </main>
       </div>

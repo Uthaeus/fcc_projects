@@ -12,6 +12,11 @@ html, body {
   max-height: 100%;
 }
 
+nav {
+  position: fixed;
+  font-family: 'Crimson Text', serif;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -19,7 +24,7 @@ nav ul {
 
 nav header {
   font-size: 1.6em;
-  padding: 15px 0 15px 25px;
+  padding: 15px 30px 15px 25px;
 }
 
 #navbar {
@@ -61,15 +66,25 @@ main {
   margin: 30px 25px 30px 25px;
 }
 
+main ul {
+  margin-left: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
 main header {
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 1.5em;
   font-weight: bold;
+  font-family: 'Crimson Text', serif;
 }
 
 main p {
   padding-left: 15px;
+}
+
+.section-content {
+  font-family: 'Cairo', sans-serif;
 }
 
 main code {
@@ -77,6 +92,14 @@ main code {
   white-space: pre-wrap;
   background-color: rgb(243, 243, 243);
   margin-left: 40px;
+  margin-bottom: 30px;
   padding: 10px;
   color: black;
+  font-family: 'Crimson Text', serif;
+}
+
+.sub-head {
+  font-size: 1.2em;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
 }
