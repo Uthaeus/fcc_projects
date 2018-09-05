@@ -47,6 +47,19 @@ button {
   outline: none;
 }
 
-button:hover {
-  background-color: green;
+#equals:hover {
+  background-color: gold;
+}
+
+.digit:hover {
+  background-color: darkgrey;
+  color: white;
+}
+
+.operator:hover {
+  background-color: yellow;
+}
+
+.function:hover {
+  background-color: red;
 }
