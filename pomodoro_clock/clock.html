@@ -6,20 +6,28 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   </head>
-  <body>
+  <body onload="resetClock();">
     <div id="title">Pomodoro Clock<i class="fab fa-free-code-camp"></i></div>
 
     <div id="clock">
       <div id="break-counter">
-        <div id="break-decrement" class="decrementer"><i class="fas fa-arrow-circle-down"></i></div>
+        <div id="break-decrement" class="decrementer" onclick="breakDecrement()">
+          <i class="fas fa-arrow-circle-down"></i>
+        </div>
         <div id="break-length" class="length"></div>
-        <div id="break-increment" class="incrementer"><i class="fas fa-arrow-circle-up"></i></div>
+        <div id="break-increment" class="incrementer" onclick="breakIncrement()">
+          <i class="fas fa-arrow-circle-up"></i>
+        </div>
       </div>
 
       <div id="session-counter">
-        <div id="session-decrementer" class="decrementer"><i class="fas fa-arrow-circle-down"></i></div>
+        <div id="session-decrementer" class="decrementer" onclick="sessionDecrement()">
+          <i class="fas fa-arrow-circle-down"></i>
+        </div>
         <div id="session-length" class="length"></div>
-        <div id="session-incrementer" class="incrementer"><i class="fas fa-arrow-circle-up"></i></div>
+        <div id="session-incrementer" class="incrementer" onclick="sessionIncrement()">
+          <i class="fas fa-arrow-circle-up"></i>
+        </div>
       </div>
 
       <div id="timer">
