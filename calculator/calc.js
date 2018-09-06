@@ -110,7 +110,7 @@ function clearAll() {
   displayData = 0;
   ans = 0;
   calculation.textContent = displayData;
-  answer.textContent = ans;
+  display.textContent = ans;
 }
 
 function toggleMathJS() {
