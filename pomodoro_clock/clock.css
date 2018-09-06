@@ -1,0 +1,12 @@
+body {
+  background-color: grey;
+}
+
+#title {
+  width: 100%;
+  text-align: center;
+  font-size: 5em;
+  color: brown;
+  padding: 25px;
+  margin: 20px;
+}
