@@ -11,6 +11,7 @@
 
     <div id="clock">
       <div id="break-counter">
+        <div id="break-label">Break Length</div>
         <div id="break-decrement" class="decrementer" onclick="breakDecrement()">
           <i class="fas fa-arrow-circle-down"></i>
         </div>
@@ -21,17 +22,18 @@
       </div>
 
       <div id="session-counter">
-        <div id="session-decrementer" class="decrementer" onclick="sessionDecrement()">
+        <div id="session-label">Session Length</div>
+        <div id="session-decrement" class="decrementer" onclick="sessionDecrement()">
           <i class="fas fa-arrow-circle-down"></i>
         </div>
         <div id="session-length" class="length"></div>
-        <div id="session-incrementer" class="incrementer" onclick="sessionIncrement()">
+        <div id="session-increment" class="incrementer" onclick="sessionIncrement()">
           <i class="fas fa-arrow-circle-up"></i>
         </div>
       </div>
 
       <div id="timer">
-        <div id="timer-label"></div>
+        <div id="timer-label">Session</div>
         <div id="time-left">
           <p id="minutes"></p>
           <p>:</p>

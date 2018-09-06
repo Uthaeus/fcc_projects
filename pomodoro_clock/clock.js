@@ -44,14 +44,6 @@ function startStop() {
   }
 }
 
-// function start() {
-//   delay = setInterval(timer, 1000);
-// }
-
-// function stop() {
-//   clearInterval(delay);
-// }
-
 function timer() {
   if (timerMin.innerHTML > 0 || timerSec.innerHTML > 0) {
     timerSec.innerHTML--;
