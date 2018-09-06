@@ -15,10 +15,13 @@ buttons.forEach((btn) => {
         if (lastInput === '=') {
           clearAll();
         }
-        input += el.target.value;
-        lastInput = el.target.value;
-        displayData = formatInput(input);
-        calculation.textContent = displayData;
+        if (input.length == 1 && input[0] == '0' && el.target.value === '0') {
+        } else {
+          input += el.target.value;
+          lastInput = el.target.value;
+          displayData = formatInput(input);
+          calculation.textContent = displayData;
+        }
         break;
       case 'operator':
         if (input.length < 1 && el.target.value !== '-') {
