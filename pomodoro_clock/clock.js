@@ -3,6 +3,7 @@ let sessionMin = document.getElementById('session-length');
 let timerMin = document.getElementById('minutes');
 let timerSec = document.getElementById('seconds');
 let delay;
+let paused = true;
 
 
 function breakDecrement() {
@@ -33,14 +34,23 @@ function sessionIncrement() {
   }
 }
 
-function start() {
-  delay = setInterval(timer, 1000);
+function startStop() {
+  if (paused) {
+    paused = false;
+    delay = setInterval(timer, 1000);
+  } else {
+    paused = true;
+    clearInterval(delay);
+  }
 }
 
-function stop() {
-  console.log('hitting stop');
-  clearInterval(delay);
-}
+// function start() {
+//   delay = setInterval(timer, 1000);
+// }
+
+// function stop() {
+//   clearInterval(delay);
+// }
 
 function timer() {
   if (timerMin.innerHTML > 0 || timerSec.innerHTML > 0) {
@@ -60,5 +70,6 @@ function resetClock() {
   sessionMin.innerHTML = 25;
   timerMin.innerHTML = 25;
   timerSec.innerHTML = 00;
-  stop();
+  paused = false;
+  startStop();
 }
