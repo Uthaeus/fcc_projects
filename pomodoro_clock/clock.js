@@ -2,7 +2,7 @@ let breakMin = document.getElementById('break-length');
 let sessionMin = document.getElementById('session-length');
 let timerMin = document.getElementById('minutes');
 let timerSec = document.getElementById('seconds');
-let runClock = false;
+let delay;
 
 
 function breakDecrement() {
@@ -33,24 +33,24 @@ function sessionIncrement() {
   }
 }
 
-function startStop() {
-  runClock = !runClock;
+function start() {
+  delay = setInterval(timer, 1000);
+}
 
-  if (runClock) {
-    if (timerMin.innerHTML > 0 && timerSec.innerHTML > 0) {
-      let mins = timerMin.innerHTML, secs = timerSec.innerHTML;
-      setInterval(function() {
-        timerMin.innerHTML = mins;
-        timerSecs.innerHTML = secs;
-        secs--;
-        if (secs == 00) {
-          mins--;
-          secs = 60;
-          if (mins == 0 && secs == 0) {
-            countOver();
-          }
-        }
-      }, 1000);
+function stop() {
+  console.log('hitting stop');
+  clearInterval(delay);
+}
+
+function timer() {
+  if (timerMin.innerHTML > 0 || timerSec.innerHTML > 0) {
+    timerSec.innerHTML--;
+    if (timerSec.innerHTML <= 0) {
+      timerMin.innerHTML--;
+      timerSec.innerHTML = 59;
+      if (timerMin.innerHTML == 0 && timerSec.innerHTML == 0) {
+        countOver();
+      }
     }
   }
 }
@@ -60,5 +60,5 @@ function resetClock() {
   sessionMin.innerHTML = 25;
   timerMin.innerHTML = 25;
   timerSec.innerHTML = 00;
-  runClock = false;
+  stop();
 }
