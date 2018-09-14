@@ -7,8 +7,24 @@
 function getFinalOpenedDoors (numDoors) {
     // Good luck!
     var doors = new Array(numDoors).fill('closed');
+    let result = [];
 
-    return doors;
+    for (var i = 0, j = 1; i < numDoors; i++, j++) {
+        for (var k = i; k < numDoors; k += j) {
+            if (doors[k] === 'closed') {
+                doors[k] = 'open';
+            } else {
+                doors[k] = 'closed';
+            }
+        }
+    }
+    
+    for (var y = 0; y < numDoors; y++) {
+        if (doors[y] === 'open') {
+            result.push(y + 1);
+        }
+    }
+    return result;
 }
 
-console.log(getFinalOpenedDoors(100));
+console.log(getFinalOpenedDoors(10));
