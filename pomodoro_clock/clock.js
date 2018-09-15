@@ -3,6 +3,7 @@ let sessionMin = document.getElementById('session-length');
 let label = document.getElementById('timer-label');
 let delay;
 let paused = true;
+let mainTimer = true;
 let timer = document.getElementById('time-left');
 
 function clockAdjust(min) {
@@ -46,6 +47,7 @@ function startStop() {
 }
 
 function countdown() {
+  let out = true;
   let clock = timer.innerHTML.split(':');
   let mins = +clock[0];
   let secs = +clock[1];
@@ -53,33 +55,34 @@ function countdown() {
   if (mins > 0 || secs > 0) {
     secs--;
     if (secs <= 0) {
-      if (mins === 0 && secs === 0) {
-        breakdown();
+      if (mins <= 0 && secs <= 0) {
+        if (mainTimer) {
+          console.log('hitting if');
+          clockAdjust(breakMin.innerHTML);
+          mainTimer = false;
+        } else {
+          console.log('hitting else');
+          clockAdjust(sessionMin.innerHTML);
+          mainTimer = true;
+        }
+        out = false;
+      } else {
+        mins--;
+        secs = 59;
       }
-      mins--;
-      secs = 59;
     }
   }
-  if (secs < 10) {
-    secs = '0' + secs.toString();
+  if (out) {
+    formatOut(mins, secs);
   }
-  timer.innerHTML = `${mins}:${secs}`;
+  
 }
 
-function breakdown() {
-  let mins = breakMin.innerHTML;
-  let secs = '00';
-
-  if (mins > 0 || secs > 0) {
-    secs--;
-    if (secs <= 0) {
-      if (mins === 0 && secs === 0) {
-        countdown();
-      }
-      mins--;
-      secs = 59;
-    }
+function formatOut(mins, secs) {
+  if (mins < 10) {
+    mins = '0' + mins.toString();
   }
+
   if (secs < 10) {
     secs = '0' + secs.toString();
   }
