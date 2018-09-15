@@ -40,10 +40,17 @@ function startStop() {
   if (paused) {
     paused = false;
     delay = setInterval(countdown, 1000);
+    if (mainTimer) {
+      label.innerHTML = 'Session';
+    } else {
+      label.innerHTML = 'Break';
+    }
   } else {
     paused = true;
     clearInterval(delay);
+    label.innerHTML = 'Paused';
   }
+
 }
 
 function countdown() {
@@ -54,24 +61,24 @@ function countdown() {
 
   if (mins > 0 || secs > 0) {
     secs--;
-    if (secs <= 0) {
-      if (mins <= 0 && secs <= 0) {
-        if (mainTimer) {
-          console.log('hitting if');
-          clockAdjust(breakMin.innerHTML);
-          mainTimer = false;
-        } else {
-          console.log('hitting else');
-          clockAdjust(sessionMin.innerHTML);
-          mainTimer = true;
-        }
-        out = false;
+  }
+  if (secs <= 0) {
+    if (mins <= 0 && secs <= 0) {
+      document.getElementById('beep').play();
+      if (mainTimer) {
+        clockAdjust(breakMin.innerHTML);
+        mainTimer = false;
       } else {
-        mins--;
-        secs = 59;
+        clockAdjust(sessionMin.innerHTML);
+        mainTimer = true;
       }
+      out = false;
+    } else {
+      mins--;
+      secs = 59;
     }
   }
+  
   if (out) {
     formatOut(mins, secs);
   }

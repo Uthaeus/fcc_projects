@@ -4,47 +4,51 @@
     <title>Pomodoro Clock</title>
     <link rel="stylesheet" href="clock.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron|Wallpoet" rel="stylesheet">
 
   </head>
   <body onload="resetClock();">
     <div id="title">Pomodoro Clock<i class="fab fa-free-code-camp"></i></div>
 
     <div id="clock">
-      <div id="break-counter">
-        <div id="break-label">Break Length</div>
-        <div id="break-decrement" class="decrementer" onclick="breakDecrement()">
-          <i class="fas fa-arrow-circle-down"></i>
-        </div>
-        <div id="break-length" class="length"></div>
-        <div id="break-increment" class="incrementer" onclick="breakIncrement()">
+      <div id="break-counter" class="container">
+        <div id="break-label" class="label">Break Length</div>
+        <div id="break-decrement" class="funcs" onclick="breakIncrement()">
           <i class="fas fa-arrow-circle-up"></i>
         </div>
-      </div>
-
-      <div id="session-counter">
-        <div id="session-label">Session Length</div>
-        <div id="session-decrement" class="decrementer" onclick="sessionDecrement()">
+        <div id="break-length" class="time"></div>
+        <div id="break-increment" class="funcs" onclick="breakDecrement()">
           <i class="fas fa-arrow-circle-down"></i>
         </div>
-        <div id="session-length" class="length"></div>
-        <div id="session-increment" class="incrementer" onclick="sessionIncrement()">
+      </div>
+
+      <div id="timer" class="container">
+        <div id="timer-label" class="label"></div>
+        <div id="time-left" class="time"></div>
+        <div id="controls">
+          <div id="start_stop" onclick="startStop()" class="funcs">
+            <i class="fas fa-play"></i> 
+            <i class="fas fa-pause"></i>
+          </div>
+          <div id="reset" onclick="resetClock()" class="funcs"><i class="fas fa-redo-alt"></i></div>
+        </div>
+        
+      </div>
+
+      <div id="session-counter" class="container">
+        <div id="session-label" class="label">Session Length</div>
+        <div id="session-decrement" class="funcs" onclick="sessionIncrement()">
           <i class="fas fa-arrow-circle-up"></i>
         </div>
-      </div>
-
-      <div id="timer">
-        <div id="timer-label"></div>
-        <div id="time-left"></div>
-      </div>
-
-      <div id="controls">
-        <div id="start_stop" onclick="startStop()">
-          <i class="fas fa-play"></i> 
-          <i class="fas fa-pause"></i>
+        <div id="session-length" class="time"></div>
+        <div id="session-increment" class="funcs" onclick="sessionDecrement()">
+          <i class="fas fa-arrow-circle-down"></i>
         </div>
-        <div id="reset" onclick="resetClock()"><i class="fas fa-redo-alt"></i></div>
       </div>
+
     </div>
+    <audio id="beep" preload="none" src="http://www.downloadfreesound.com/wp-content/uploads/2013/08/Beep14.wav">
+    </audio>
 
     <script src="clock.js"></script>
   </body>

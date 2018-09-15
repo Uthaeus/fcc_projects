@@ -1,6 +1,10 @@
 body {
   background-color: grey;
+  margin: 2%;
 }
+
+/* font-family: 'Orbitron', sans-serif;
+font-family: 'Wallpoet', cursive; */
 
 #title {
   width: 100%;
@@ -9,4 +13,54 @@ body {
   color: brown;
   padding: 25px;
   margin: 20px;
+}
+
+#break-counter {
+  width: 25%;
+}
+
+#session-counter {
+  width: 25%;
+}
+
+#timer {
+  width: 50%;
+  text-align: center;
+}
+
+#clock {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.time {
+  font-family: 'Wallpoet', cursive;
+  font-size: 5em;
+  padding: 20px;
+  margin: 15px;
+}
+
+.label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  padding: 10px;
+}
+
+.funcs {
+  font-size: 3em;
+  padding: 20px;
+}
+
+.container {
+  border: 3px solid black;
+  border-radius: 4px;
+  text-align: center;
+  margin: 15px;
 }
