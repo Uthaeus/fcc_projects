@@ -1,11 +1,13 @@
 let breakMin = document.getElementById('break-length');
 let sessionMin = document.getElementById('session-length');
-let timerMin = document.getElementById('minutes');
-let timerSec = document.getElementById('seconds');
 let label = document.getElementById('timer-label');
 let delay;
 let paused = true;
+let timer = document.getElementById('time-left');
 
+function clockAdjust(min) {
+  timer.innerHTML = `${min}:00`;
+}
 
 function breakDecrement() {
   if (breakMin.innerHTML > 0) {
@@ -22,40 +24,46 @@ function breakIncrement() {
 function sessionDecrement() {
   if (sessionMin.innerHTML > 0) {
     sessionMin.innerHTML--;
-    timerMin.innerHTML = sessionMin.innerHTML;
-    timerSec.innerHTML = 0;
+    clockAdjust(sessionMin.innerHTML);
   }
 }
 
 function sessionIncrement() {
   if (sessionMin.innerHTML < 60) {
     sessionMin.innerHTML++;
-    timerMin.innerHTML = sessionMin.innerHTML;
-    timerSec.innerHTML = 0;
+    clockAdjust(sessionMin.innerHTML);
   }
 }
 
 function startStop() {
   if (paused) {
     paused = false;
-    delay = setInterval(timer, 1000);
+    delay = setInterval(countdown, 1000);
   } else {
     paused = true;
     clearInterval(delay);
   }
 }
 
-function timer() {
-  if (timerMin.innerHTML > 0 || timerSec.innerHTML > 0) {
-    timerSec.innerHTML--;
-    if (timerSec.innerHTML <= 0) {
-      if (timerMin.innerHTML <= 0 && timerSec.innerHTML <= 0) {
+function countdown() {
+  let clock = timer.innerHTML.split(':');
+  let mins = +clock[0];
+  let secs = +clock[1];
+
+  if (mins > 0 || secs > 0) {
+    secs--;
+    if (secs <= 0) {
+      if (mins === 0 && secs === 0) {
         countOver();
       }
-      timerMin.innerHTML--;
-      timerSec.innerHTML = 59;
+      mins--;
+      secs = 59;
     }
   }
+  if (secs < 10) {
+    secs = '0' + secs.toString();
+  }
+  timer.innerHTML = `${mins}:${secs}`;
 }
 
 function countOver() {
@@ -68,8 +76,7 @@ function resetClock() {
   label.innerHTML = 'Adjust to a desired time and begin your session.'
   breakMin.textContent = 5;
   sessionMin.innerHTML = 25;
-  timerMin.innerHTML = 25;
-  timerSec.innerHTML = 0;
+  timer.innerHTML = '25:00';
   paused = false;
   startStop();
 }
