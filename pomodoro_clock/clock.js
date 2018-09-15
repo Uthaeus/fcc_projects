@@ -54,7 +54,7 @@ function countdown() {
     secs--;
     if (secs <= 0) {
       if (mins === 0 && secs === 0) {
-        countOver();
+        breakdown();
       }
       mins--;
       secs = 59;
@@ -66,10 +66,24 @@ function countdown() {
   timer.innerHTML = `${mins}:${secs}`;
 }
 
-function countOver() {
-  startStop();
-  label.innerHTML = "Time is up";
-  resetClock();
+function breakdown() {
+  let mins = breakMin.innerHTML;
+  let secs = '00';
+
+  if (mins > 0 || secs > 0) {
+    secs--;
+    if (secs <= 0) {
+      if (mins === 0 && secs === 0) {
+        countdown();
+      }
+      mins--;
+      secs = 59;
+    }
+  }
+  if (secs < 10) {
+    secs = '0' + secs.toString();
+  }
+  timer.innerHTML = `${mins}:${secs}`;
 }
 
 function resetClock() {
