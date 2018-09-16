@@ -26,6 +26,7 @@ function sessionDecrement() {
   if (sessionMin.innerHTML > 0) {
     sessionMin.innerHTML--;
     clockAdjust(sessionMin.innerHTML);
+    mainTimer = true;
   }
 }
 
@@ -33,6 +34,7 @@ function sessionIncrement() {
   if (sessionMin.innerHTML < 60) {
     sessionMin.innerHTML++;
     clockAdjust(sessionMin.innerHTML);
+    mainTimer = true;
   }
 }
 
@@ -53,6 +55,19 @@ function startStop() {
 
 }
 
+function intermission() {
+  document.getElementById('beep').play();
+  setInterval()
+  if (mainTimer) {
+    mainTimer = false;
+    clockAdjust(breakMin.innerHTML);
+  } else {
+    mainTimer = true;
+    clockAdjust(sessionMin.innerHTML);
+    
+  }
+}
+
 function countdown() {
   let out = true;
   let clock = timer.innerHTML.split(':');
@@ -64,14 +79,7 @@ function countdown() {
   }
   if (secs <= 0) {
     if (mins <= 0 && secs <= 0) {
-      document.getElementById('beep').play();
-      if (mainTimer) {
-        clockAdjust(breakMin.innerHTML);
-        mainTimer = false;
-      } else {
-        clockAdjust(sessionMin.innerHTML);
-        mainTimer = true;
-      }
+      intermission();
       out = false;
     } else {
       mins--;
@@ -97,10 +105,10 @@ function formatOut(mins, secs) {
 }
 
 function resetClock() {
-  label.innerHTML = 'Adjust to a desired time and begin your session.'
   breakMin.textContent = 5;
   sessionMin.innerHTML = 25;
   timer.innerHTML = '25:00';
   paused = false;
   startStop();
+  label.innerHTML = 'Adjust to a desired time and begin your session.';
 }
