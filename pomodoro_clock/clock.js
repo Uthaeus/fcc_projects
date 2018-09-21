@@ -1,10 +1,36 @@
 let breakMin = document.getElementById('break-length');
 let sessionMin = document.getElementById('session-length');
 let label = document.getElementById('timer-label');
-let delay;
 let paused = true;
 let mainTimer = true;
 let timer = document.getElementById('time-left');
+
+function setLabel(type) {
+  switch (type) {
+    case 'pause':
+      label.innerHTML = 'Paused...';
+      break;
+    case 'session':
+      label.innerHTML = 'Session Timer';
+      break;
+    case 'break':
+      label.innerHTML = 'Break Timer';
+      break;
+    case 'session-end':
+      label.innerHTML = 'Session has ended...Beginning Break Timer';
+      break;
+    case 'break-end':
+      label.innerHTML = 'Break has ended...Beginning new Break';
+      break;
+    default:
+      label.innerHTML = 'Adjust Timer and Begin';
+      break;
+  }
+}
+
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 function clockAdjust(min) {
   timer.innerHTML = `${min}:00`;
@@ -23,6 +49,8 @@ function breakIncrement() {
 }
 
 function sessionDecrement() {
+  paused = true;
+
   if (sessionMin.innerHTML > 0) {
     sessionMin.innerHTML--;
     clockAdjust(sessionMin.innerHTML);
@@ -31,6 +59,8 @@ function sessionDecrement() {
 }
 
 function sessionIncrement() {
+  paused = true;
+
   if (sessionMin.innerHTML < 60) {
     sessionMin.innerHTML++;
     clockAdjust(sessionMin.innerHTML);
@@ -41,25 +71,27 @@ function sessionIncrement() {
 function startStop() {
   if (paused) {
     paused = false;
-    delay = setInterval(countdown, 1000);
+    
     if (mainTimer) {
-      label.innerHTML = 'Session';
+      setLabel('session');
     } else {
-      label.innerHTML = 'Break';
+      setLabel('break');
     }
   } else {
     paused = true;
-    clearInterval(delay);
+    
     label.innerHTML = 'Paused';
   }
-
+  countdown();
 }
 
 function prepClock() {
   if (!mainTimer) {
     clockAdjust(breakMin.innerHTML);
+    setLabel('break');
   } else {
     clockAdjust(sessionMin.innerHTML);
+    setLabel('session');
   }
 }
 
@@ -67,25 +99,31 @@ function intermission() {
   document.getElementById('beep').play();
   //setInterval()
   if (mainTimer) {
-    label.innerHTML = 'Session end: \nBreak beginning....';
+    setLabel('session-end');
     mainTimer = false;
 
   } else {
-    label.innerHTML = 'Break end: \nBeginning new Session....'
+    setLabel('break-end');
     mainTimer = true;
 
   }
-  setTimeout(function() {
-    prepClock()
-  }, 2000);
+  sleep(2000).then(() => {
+    prepClock();
+  });
   
 }
 
 function countdown() {
-  let out = true;
+  let out = true, delay;
   let clock = timer.innerHTML.split(':');
   let mins = +clock[0];
   let secs = +clock[1];
+
+  if (paused) {
+    clearInterval(delay);
+  } else {
+    delay = setInterval(countdown, 1000);
+  }
 
   if (mins > 0 || secs > 0) {
     secs--;
@@ -123,5 +161,5 @@ function resetClock() {
   timer.innerHTML = '25:00';
   paused = false;
   startStop();
-  label.innerHTML = 'Adjust to a desired time and begin your session.';
+  setLabel();
 }
