@@ -55,17 +55,30 @@ function startStop() {
 
 }
 
-function intermission() {
-  document.getElementById('beep').play();
-  setInterval()
-  if (mainTimer) {
-    mainTimer = false;
+function prepClock() {
+  if (!mainTimer) {
     clockAdjust(breakMin.innerHTML);
   } else {
-    mainTimer = true;
     clockAdjust(sessionMin.innerHTML);
-    
   }
+}
+
+function intermission() {
+  document.getElementById('beep').play();
+  //setInterval()
+  if (mainTimer) {
+    label.innerHTML = 'Session end: \nBreak beginning....';
+    mainTimer = false;
+
+  } else {
+    label.innerHTML = 'Break end: \nBeginning new Session....'
+    mainTimer = true;
+
+  }
+  setTimeout(function() {
+    prepClock()
+  }, 2000);
+  
 }
 
 function countdown() {
