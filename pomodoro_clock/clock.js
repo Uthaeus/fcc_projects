@@ -6,25 +6,27 @@ let delay, paused = true, session = true;
 
 
 const breakIncrement = () => {
-    if (breakTime.innerHTML <= 60 && breakTime.innerHTML >= 0) {
+    if (breakTime.innerHTML < 60 && breakTime.innerHTML >= 0) {
         breakTime.innerHTML++;
     }
     if (!session) {
         pause();
+        clockAdjust(breakTime.innerHTML);
     }
 }
 
 const breakDecrement = () => {
-    if (breakTime.innerHTML <= 60 && breakTime.innerHTML >= 0) {
+    if (breakTime.innerHTML <= 60 && breakTime.innerHTML > 1) {
         breakTime.innerHTML--;
     }
     if (!session) {
         pause();
+        clockAdjust(breakTime.innerHTML);
     }
 }
 
 const sessionIncrement = () => {
-    if (sessionTime.innerHTML <= 60 && sessionTime.innerHTML >= 0) {
+    if (sessionTime.innerHTML < 60 && sessionTime.innerHTML >= 0) {
         sessionTime.innerHTML++;
         clockAdjust(sessionTime.innerHTML);
     }
@@ -32,7 +34,7 @@ const sessionIncrement = () => {
 }
 
 const sessionDecrement = () => {
-    if (sessionTime.innerHTML <= 60 && sessionTime.innerHTML >= 0) {
+    if (sessionTime.innerHTML <= 60 && sessionTime.innerHTML > 1) {
         sessionTime.innerHTML--;
         clockAdjust(sessionTime.innerHTML);
     }
@@ -41,7 +43,7 @@ const sessionDecrement = () => {
 
 const startStop = () => {
     if (paused) {
-        setInterval(clock, 1000);
+        delay = setInterval(clock, 1000);
         if (session) {
             setLabel('session');
         } else {
@@ -60,11 +62,12 @@ const clockAdjust = min => {
 }
 
 const resetClock = () => {
+    document.getElementById('beep').pause();
+    pause();
     breakTime.innerHTML = 5;
     sessionTime.innerHTML = 25;
     timer.innerHTML = '25:00';
     setLabel();
-    pause();
 }
 
 const clock = () => {
@@ -92,6 +95,7 @@ const clock = () => {
 
 const intermission = () => {
     pause();
+    formatOut(0, 0);
     document.getElementById('beep').play();
     if (session) {
         setLabel('session-end');
@@ -110,29 +114,29 @@ const intermission = () => {
 const setLabel = type => {
     switch (type) {
         case 'pause':
-            label = 'Paused...';
+            label.innerHTML = 'Paused...';
             break;
         case 'session-end':
-            label = 'End of Session\nBreak Beginning';
+            label.innerHTML = 'End of Session\nBreak Beginning';
             break;
         case 'break-end':
-            label = 'End of Break\nSession Beginning';
+            label.innerHTML = 'End of Break\nSession Beginning';
             break;
         case 'session':
-            label = 'Session Timer';
+            label.innerHTML = 'Session Timer';
             break;
         case 'break':
-            label = 'Break Timer';
+            label.innerHTML = 'Break Timer';
             break;
         default:
-            label = 'Adjust time and begin';
+            label.innerHTML = 'Adjust time and begin';
             break;
     }
 }
 
 const pause = () => {
     paused = true;
-    clearInterval(clock);
+    clearInterval(delay);
 }
 
 const formatOut = (mins, secs) => {
