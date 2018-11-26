@@ -62,11 +62,12 @@ const clockAdjust = min => {
 }
 
 const resetClock = () => {
-    document.getElementById('beep').pause();
+    document.getElementById('beep').load();
     pause();
     breakTime.innerHTML = 5;
     sessionTime.innerHTML = 25;
     timer.innerHTML = '25:00';
+    session = true;
     setLabel();
 }
 
@@ -81,6 +82,7 @@ const clock = () => {
     }
     if (secs <= 0) {
         if (mins <= 0 && secs <= 0) {
+            formatOut(0, 0);
             intermission();
             out = false;
         } else {
@@ -95,18 +97,21 @@ const clock = () => {
 
 const intermission = () => {
     pause();
-    formatOut(0, 0);
+    
     document.getElementById('beep').play();
     if (session) {
         setLabel('session-end');
-        clockAdjust(breakTime.innerHTML);
-        session = false;
     } else {
         setLabel('break-end');
-        clockAdjust(sessionTime.innerHTML);
-        session = true;
     }
     sleep(2000).then(() => {
+        if (session) {
+            clockAdjust(breakTime.innerHTML);
+            session = false;
+        } else {
+            clockAdjust(sessionTime.innerHTML);
+            session = true;
+        }
         startStop();
     });
 }
